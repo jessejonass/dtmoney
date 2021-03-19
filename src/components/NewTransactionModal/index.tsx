@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 
 import Modal from 'react-modal';
 
@@ -7,6 +7,7 @@ import { Container, TransactionTypeContainer, RadioBox } from './styles';
 import closeImage from '../../assets/close.svg';
 import incomeImage from '../../assets/income.svg';
 import outcomeImage from '../../assets/outcome.svg';
+import { TransactionsContext } from '../../TransactionContext';
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -14,7 +15,33 @@ interface NewTransactionModalProps {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
+  const { createTransaction } = useContext(TransactionsContext);
+
+  const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState(0);
+  const [category, setCategory] = useState('');
   const [type, setType] = useState('deposit');
+
+  async function handleCreateNewTransaction(event: FormEvent) {
+    event.preventDefault();
+
+    // const data = {title, amount, category, type};
+
+    await createTransaction({
+      title,
+      amount,
+      category,
+      type,
+    });
+
+    setTitle('');
+    setAmount(0);
+    setCategory('deposit');
+    setType('');
+
+    onRequestClose();
+  };
+
 
   return (
     <Modal
@@ -31,16 +58,20 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         <img src={closeImage} alt="Fechar modal"/>
       </button>
 
-      <Container>
+      <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar transação</h2>
 
         <input
           placeholder="Título"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
         />
         
         <input
           placeholder="Valor"
           type="number"
+          value={amount}
+          onChange={e => setAmount(+e.target.value)}
         />
 
         <TransactionTypeContainer>
@@ -67,6 +98,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         
         <input
           placeholder="Categoria"
+          value={category}
+          onChange={e => setCategory(e.target.value)}
         />
         
         <button type="submit">

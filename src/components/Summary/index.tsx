@@ -1,8 +1,8 @@
-import { Container } from "./styles";
-
 import incomeImage from '../../assets/income.svg';
 import outcomeImage from '../../assets/outcome.svg';
 import totalImage from '../../assets/total.svg';
+
+import { Container } from "./styles";
 
 export function Summary() {
   return (
