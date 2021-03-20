@@ -6,10 +6,6 @@ Install the dependencies
 
 > yarn install
 
-Execute the fake api
-
-> command here
-
 Execute the application
 
 > yarn start
