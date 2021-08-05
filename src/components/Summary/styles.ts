@@ -6,6 +6,11 @@ export const Container = styled.div`
   gap: 2rem;
   margin-top: -10rem;
 
+  @media(max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   div {
     background: var(--shape);
     padding: 1.5rem 2rem;
@@ -25,7 +30,7 @@ export const Container = styled.div`
       font-weight: 500;
       line-height: 3rem;
     }
-
+    
     &.highlight-background {
       background: var(--green);
       color: #fff;

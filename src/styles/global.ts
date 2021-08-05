@@ -1,18 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-:root {
-  --background: #f0f2f5;
-  --shape: #ffffff;
-
-  --red: #E62E4D;
-  --blue: #5429CC;
-  --blue-light: #6933ff;
-  --green: #33CC95;
-
-  --text-title: #363F5F;
-  --text-body: #969CB3;
-}
+  :root {
+    --background: #f0f2f5;
+    --green: #33cc95;
+    --red: #e52e4d;
+    --blue: #5429cc;
+    --blue-light: #6933ff;
+    --text-title: #363f5f;
+    --text-body: #969cb3;
+    --shape: #fff;
+  }
 
   * {
     margin: 0;
@@ -20,14 +18,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  // padrão de fonte: 16px (desktop): 1rem
+  // determina o tamanho global de 1rem
   html {
     @media (max-width: 1080px) {
-      font-size: 93.75%; // 15px quando a tela < 1080
+      font-size: 93.75%; // font-size: 15px === 1rem
     }
 
     @media (max-width: 720px) {
-      font-size: 87.5%; // 14px quando a tela < 720
+      font-size: 87.5%; // font-size: 14px === 1rem
     }
   }
 
@@ -36,14 +34,14 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-body, input, textarea, button {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-}
+  body, input, textarea, button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
 
-h1, h2, h3, h4, h5, h6, strong {
-  font-weight: 600;
-}
+  h1, h2, h3, h5, h5, h6 {
+    font-weight: 600;
+  }
 
   button {
     cursor: pointer;
@@ -57,8 +55,7 @@ h1, h2, h3, h4, h5, h6, strong {
   .react-modal-overlay {
     background: rgba(0, 0, 0, 0.5);
 
-    position: fixed; // em cima da tela
-
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
@@ -68,14 +65,14 @@ h1, h2, h3, h4, h5, h6, strong {
     align-items: center;
     justify-content: center;
   }
-  
+
   .react-modal-content {
     width: 100%;
-    max-width: 576px;
+    max-width: 575px;
     background: var(--background);
     padding: 3rem;
     position: relative;
-    border-radius: 0.24rem;
+    border-radius: .25rem;
   }
 
   .react-modal-close {
@@ -83,13 +80,5 @@ h1, h2, h3, h4, h5, h6, strong {
     right: 1.5rem;
     top: 1.5rem;
     border: 0;
-    background: transparent;
-
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.6);
-    }
   }
 `;
-

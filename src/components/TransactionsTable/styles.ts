@@ -5,7 +5,7 @@ export const Container = styled.div`
 
   table {
     width: 100%;
-    border-spacing: 0 0.5rem; // padding fora / margin
+    border-spacing: 0 0.5rem;
 
     th {
       color: var(--text-body);
@@ -20,7 +20,7 @@ export const Container = styled.div`
       border: 0;
       background: var(--shape);
       color: var(--text-body);
-      border-radius: 0.25rem;
+      border-radius: .25rem;
 
       &:first-child {
         color: var(--text-title);
@@ -30,7 +30,7 @@ export const Container = styled.div`
         color: var(--green);
       }
 
-      &.withdrow {
+      &.withdraw {
         color: var(--red);
       }
     }
